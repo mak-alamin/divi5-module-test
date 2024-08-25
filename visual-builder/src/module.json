@@ -1,0 +1,49 @@
+{
+  "name": "divi5-mod/simple-quick-module",
+  "d4Shortcode": "divi5_simple_quick_module",
+  "title": "Divi5 Simple Module",
+  "titles": "Divi5 Simple Modules",
+  "category": "module",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "Hello"
+          }
+        },
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Divi5 Simple Module"
+            }
+          }
+        }
+      }
+    },
+    "title": {
+      "type": "object",
+      "selector": "{{selector}} .divi5_simple_quick_module_title",
+      "attributes": {
+        "class": "divi5_simple_quick_module_title"
+      },
+      "tagName": "h2",
+      "inlineEditor": "plainText",
+      "elementType": "heading",
+      "childrenSanitizer": "et_core_esc_previously"
+    },
+    "content": {
+      "type": "object",
+      "selector": "{{selector}} .divi5_simple_quick_module_content",
+      "attributes": {
+        "class": "divi5_simple_quick_module_content"
+      },
+      "tagName": "div",
+      "inlineEditor": "richText",
+      "childrenSanitizer": "et_core_esc_previously",
+      "allowHtml": true
+    }
+  }
+}
