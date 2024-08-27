@@ -8,6 +8,7 @@ Author:     Mak Alamin
 Author URI:  https://makalamin.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: divi5-module-test
 */
 
 if ( ! defined( 'ABSPATH' ) ) {

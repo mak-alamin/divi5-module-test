@@ -23,6 +23,15 @@
         }
       }
     },
+    "image": {
+      "type": "object",
+      "selector": "{{selector}} .divi5_simple_quick_module_image img",
+      "styleProps": {
+        "border": {
+          "important": true
+        }
+      }
+    },
     "title": {
       "type": "object",
       "selector": "{{selector}} .divi5_simple_quick_module_title",

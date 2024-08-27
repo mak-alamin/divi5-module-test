@@ -82,11 +82,11 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
                     ),
 
                     // Image.
-                    $elements->style(
-                        [
-                            'attrName' => 'upload',
-                        ]
-                    ),
+                    // $elements->style(
+                    //     [
+                    //         'attrName' => 'image',
+                    //     ]
+                    // ),
                 ],
             ]
         );
@@ -127,6 +127,38 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
      * Render module HTML output.
      */
     public static function render_callback( $attrs, $content, $block, $elements ) {
+        // Image.
+		$image_src = $attrs['image']['innerContent']['desktop']['value']['src'] ?? '';
+		$image_alt = $attrs['image']['innerContent']['desktop']['value']['alt'] ?? '';
+		
+		$image     = HTMLUtility::render(
+			[
+				'tag'                  => 'img',
+				'attributes'           => [
+					'src' => $image_src,
+					'alt' => $image_alt,
+				],
+				'attributesSanitizers' => [
+					'src' => function ( $value ) {
+						$protocols = array_merge( wp_allowed_protocols(), [ 'data' ] ); // Need to add `data` protocol for default image.
+						return esc_url( $value, $protocols );
+					},
+				],
+			]
+		);
+
+		// Image container.
+		$image_container = HTMLUtility::render(
+			[
+				'tag'               => 'div',
+				'attributes'        => [
+					'class' => 'divi5_simple_quick_module_image',
+				],
+				'childrenSanitizer' => 'et_core_esc_previously',
+				'children'          => $image,
+			]
+		);
+
         // Title.
         $title = $elements->render(
             [
@@ -141,13 +173,6 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
             ]
         );
 
-        // Image.
-        $image = $elements->render(
-            [
-                'attrName' => 'upload',
-            ]
-        );
-
         // Module Inner.
         // Essentially, this is the module content.
         // Were wrapping the title and content in a div with class `et_pb_module_inner`.
@@ -158,7 +183,7 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
                     'class' => 'et_pb_module_inner',
                 ],
                 'childrenSanitizer' => 'et_core_esc_previously',
-                'children'          => $title . $content . $image,
+                'children'          => $image_container .  $title . $content,
             ]
         );
 
