@@ -18,7 +18,6 @@ const {
   FieldContainer,
 
   // Settings - Design
-  ButtonStyle,
   AnimationGroup,
   BorderGroup,
   BoxShadowGroup,
@@ -36,6 +35,8 @@ const {
   VisibilitySettingsGroup,
 } = window?.divi?.module;
 const { registerModule } = window?.divi?.moduleLibrary;
+
+const { placeholderContent } = window?.divi?.module;
 
 // Module metadata that is used in both Frontend and Visual Builder.
 import metadata from "./module.json";
@@ -114,8 +115,14 @@ const simpleQuickModule = {
           attrName="content.decoration.bodyFont"
           groupLabel="Content Font"
         />
-        <ButtonStyle attrName="button.decoration" Label="Button Style"/>
-          
+
+        <GroupContainer id="buttonStyle" title="Button Styles">
+          <FontGroup attrName="button.decoration.font" grouped={false}/>
+          <SpacingGroup attrName="button.decoration.spacing" grouped={false}/>
+          <BackgroundGroup attrName="button.decoration.background" grouped={false} />
+          <BorderGroup attrName="button.decoration.border" grouped={false} />
+        </GroupContainer>
+        
         <SizingGroup />
         <SpacingGroup />
         <BorderGroup />
@@ -154,7 +161,9 @@ const simpleQuickModule = {
     image: {
       innerContent: {
         desktop: {
-          value: "",
+          value: {
+            src: placeholderContent?.image?.landscape,
+          },
         },
       },
     },

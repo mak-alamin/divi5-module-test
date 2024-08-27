@@ -40,7 +40,14 @@ function divi5_simple_test_module_enqueue_visual_builder_assets() {
       '1.0.0',
       true
     );
+
+    wp_enqueue_style( 'divi5-simple-modules-bundle-style', D5_TUTORIAL_SIMPLE_TEST_MODULE_URL . "visual-builder/styles/bundle.css", array(), '1.0.0' );
   }
 }
 
 add_action( 'divi_visual_builder_assets_before_enqueue_packages', 'divi5_simple_test_module_enqueue_visual_builder_assets' );
+
+add_action( 'wp_enqueue_scripts', 'divi5_simple_module_enqueue_frontend_scripts' );
+function divi5_simple_module_enqueue_frontend_scripts() {
+  wp_enqueue_style( 'divi5-simple-modules-bundle-style', D5_TUTORIAL_SIMPLE_TEST_MODULE_URL . "visual-builder/styles/bundle.css", array(), '1.0.0' );
+}

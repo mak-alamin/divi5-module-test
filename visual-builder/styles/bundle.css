@@ -1,0 +1,11 @@
+.divi5_mod_simple_quick_module {
+  padding: 15px;
+}
+.divi5_simple_quick_module__button a {
+  display: inline-block;
+  padding: 8px 15px;
+  background: #006799;
+  margin-top: 10px;
+  border-radius: 3px;
+  color: #fff;
+}

@@ -25,7 +25,7 @@
     },
     "image": {
       "type": "object",
-      "selector": "{{selector}} .divi5_simple_quick_module_image img",
+      "selector": "{{selector}} .divi5_simple_quick_module__image img",
       "styleProps": {
         "border": {
           "important": true
@@ -34,9 +34,9 @@
     },
     "title": {
       "type": "object",
-      "selector": "{{selector}} .divi5_simple_quick_module_title",
+      "selector": "{{selector}} .divi5_simple_quick_module__title",
       "attributes": {
-        "class": "divi5_simple_quick_module_title"
+        "class": "divi5_simple_quick_module__title"
       },
       "tagName": "h2",
       "inlineEditor": "plainText",
@@ -45,9 +45,9 @@
     },
     "content": {
       "type": "object",
-      "selector": "{{selector}} .divi5_simple_quick_module_content",
+      "selector": "{{selector}} .divi5_simple_quick_module__content",
       "attributes": {
-        "class": "divi5_simple_quick_module_content"
+        "class": "divi5_simple_quick_module__content"
       },
       "tagName": "div",
       "inlineEditor": "richText",
@@ -56,9 +56,9 @@
     },
     "button": {
       "type": "object",
-      "selector": "{{selector}} .divi5_simple_quick_module_button",
+      "selector": "{{selector}} .divi5_simple_quick_module__button a",
       "attributes": {
-        "class": "divi5_simple_quick_module_button"
+        "class": ""
       },
       "tagName": "a",
       "inlineEditor": "plainText",
@@ -66,10 +66,7 @@
     },
     "buttonUrl": {
       "type": "object",
-      "selector": "{{selector}} .divi5_simple_quick_module_button",
-      "attributes": {
-        "class": "divi5_simple_quick_module_button"
-      },
+      "selector": "{{selector}} .divi5_simple_quick_module__button a",
       "tagName": "a",
       "inlineEditor": "URL",
       "childrenSanitizer": "et_core_esc_previously"

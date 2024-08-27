@@ -97,7 +97,7 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
       })}
 
       <div className="et_pb_module_inner">
-        <div className="divi5_simple_quick_module_image">
+        <div className="divi5_simple_quick_module__image">
           <img src={imageSrc} alt={imageAlt} />
         </div>
 
@@ -108,7 +108,7 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
           attrName: "content",
         })}
 
-        <div className="divi5_simple_quick_module_button">
+        <div className="divi5_simple_quick_module__button">
             <a href={buttonLink}>{buttonText}</a>
         </div>
       </div>

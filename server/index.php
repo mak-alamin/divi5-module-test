@@ -2,8 +2,8 @@
 
 namespace D5TUTSimpleQuickModule;
 
-if ( ! defined( 'ABSPATH' ) ) {
-    die( 'Direct access forbidden.' );
+if (! defined('ABSPATH')) {
+    die('Direct access forbidden.');
 }
 
 require_once ABSPATH . 'wp-content/themes/Divi/includes/builder-5/server/Framework/DependencyManagement/Interfaces/DependencyInterface.php';
@@ -18,27 +18,30 @@ use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 /**
  * Class that handle "Simple Quick Module" module output in frontend.
  */
-class D5TutorialSimpleQuickModule implements DependencyInterface {
+class D5TutorialSimpleQuickModule implements DependencyInterface
+{
     /**
      * Register module.
      * `DependencyInterface` interface ensures class method name `load()` is executed for initialization.
      */
-    public function load() {
+    public function load()
+    {
         // Register module.
-        add_action( 'init', [ D5TutorialSimpleQuickModule::class, 'register_module' ] );
+        add_action('init', [D5TutorialSimpleQuickModule::class, 'register_module']);
     }
 
     /**
      * Register module.
      */
-    public static function register_module() {
+    public static function register_module()
+    {
         // Path to module metadata that is shared between Frontend and Visual Builder.
-        $module_json_folder_path = dirname( __DIR__, 1 ) . '/visual-builder/src';
+        $module_json_folder_path = dirname(__DIR__, 1) . '/visual-builder/src';
 
         ModuleRegistration::register_module(
             $module_json_folder_path,
             [
-                'render_callback' => [ D5TutorialSimpleQuickModule::class, 'render_callback' ],
+                'render_callback' => [D5TutorialSimpleQuickModule::class, 'render_callback'],
             ]
         );
     }
@@ -46,7 +49,8 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
     /**
      * Render module style.
      */
-    public static function module_styles( $args ) {
+    public static function module_styles($args)
+    {
         $attrs    = $args['attrs'] ?? [];
         $elements = $args['elements'];
 
@@ -82,11 +86,17 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
                     ),
 
                     // Image.
-                    // $elements->style(
-                    //     [
-                    //         'attrName' => 'image',
-                    //     ]
-                    // ),
+                    $elements->style(
+                        [
+                            'attrName' => 'image',
+                        ]
+                    ),
+                    // Button.
+                    $elements->style(
+                        [
+                            'attrName' => 'button',
+                        ]
+                    ),
                 ],
             ]
         );
@@ -95,7 +105,8 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
     /**
      * Render module script data.
      */
-    public static function module_script_data( $args ) {
+    public static function module_script_data($args)
+    {
         $elements = $args['elements'];
 
         // Element Script Data Options.
@@ -109,7 +120,8 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
     /**
      * Render module classnames.
      */
-    public static function module_classnames( $args ) {
+    public static function module_classnames($args)
+    {
         $classnames_instance = $args['classnamesInstance'];
         $attrs               = $args['attrs'];
 
@@ -126,38 +138,39 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
     /**
      * Render module HTML output.
      */
-    public static function render_callback( $attrs, $content, $block, $elements ) {
+    public static function render_callback($attrs, $content, $block, $elements)
+    {
         // Image.
-		$image_src = $attrs['image']['innerContent']['desktop']['value']['src'] ?? '';
-		$image_alt = $attrs['image']['innerContent']['desktop']['value']['alt'] ?? '';
-		
-		$image     = HTMLUtility::render(
-			[
-				'tag'                  => 'img',
-				'attributes'           => [
-					'src' => $image_src,
-					'alt' => $image_alt,
-				],
-				'attributesSanitizers' => [
-					'src' => function ( $value ) {
-						$protocols = array_merge( wp_allowed_protocols(), [ 'data' ] ); // Need to add `data` protocol for default image.
-						return esc_url( $value, $protocols );
-					},
-				],
-			]
-		);
+        $image_src = $attrs['image']['innerContent']['desktop']['value']['src'] ?? '';
+        $image_alt = $attrs['image']['innerContent']['desktop']['value']['alt'] ?? '';
 
-		// Image container.
-		$image_container = HTMLUtility::render(
-			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'divi5_simple_quick_module_image',
-				],
-				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $image,
-			]
-		);
+        $image     = HTMLUtility::render(
+            [
+                'tag'                  => 'img',
+                'attributes'           => [
+                    'src' => $image_src,
+                    'alt' => $image_alt,
+                ],
+                'attributesSanitizers' => [
+                    'src' => function ($value) {
+                        $protocols = array_merge(wp_allowed_protocols(), ['data']); // Need to add `data` protocol for default image.
+                        return esc_url($value, $protocols);
+                    },
+                ],
+            ]
+        );
+
+        // Image container.
+        $image_container = HTMLUtility::render(
+            [
+                'tag'               => 'div',
+                'attributes'        => [
+                    'class' => 'divi5_simple_quick_module__image',
+                ],
+                'childrenSanitizer' => 'et_core_esc_previously',
+                'children'          => $image,
+            ]
+        );
 
         // Title.
         $title = $elements->render(
@@ -174,26 +187,25 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
         );
 
         //Button
-		$buttonText = $attrs['button']['innerContent']['desktop']['value'] ?? '';
-		$buttonUrl = $attrs['buttonUrl']['innerContent']['desktop']['value'] ?? '';
+        $buttonText = $attrs['button']['innerContent']['desktop']['value'] ?? '';
+        $buttonUrl = $attrs['buttonUrl']['innerContent']['desktop']['value'] ?? '';
 
-		$button = HTMLUtility::render(
-			[
-				'tag'               => 'a',
-				'attributes'        => [
-                    'href' => $buttonUrl,
-					'class' => 'divi5_simple_quick_module_button',
-				],
-				'children'          => $buttonText,
+        $button = HTMLUtility::render(
+            [
+                'tag'               => 'div',
+                'attributes'        => [
+                    'class' => 'divi5_simple_quick_module__button',
+                ],
+                'children'          => '<a href="' . $buttonUrl . '">' . $buttonText . '</a>',
                 'childrenSanitizer' => 'et_core_esc_previously',
-				'attributesSanitizers' => [
-					'href' => function ( $value ) {
-						$protocols = array_merge( wp_allowed_protocols(), [ 'data' ] ); // Need to add `data` protocol for default image.
-						return esc_url( $value, $protocols );
-					},
-				],
-			]
-		);
+                'attributesSanitizers' => [
+                    'href' => function ($value) {
+                        $protocols = array_merge(wp_allowed_protocols(), ['data']); // Need to add `data` protocol for default image.
+                        return esc_url($value, $protocols);
+                    },
+                ],
+            ]
+        );
 
         // Module Inner.
         // Essentially, this is the module content.
@@ -231,21 +243,20 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
                 'id'                  => $block->parsed_block['id'],
                 'moduleClassName'     => 'd5_tut_simple_quick_module',
                 'name'                => $block->block_type->name,
-                'classnamesFunction'  => [ D5TutorialSimpleQuickModule::class, 'module_classnames' ],
+                'classnamesFunction'  => [D5TutorialSimpleQuickModule::class, 'module_classnames'],
                 'moduleCategory'      => $block->block_type->category,
-                'stylesComponent'     => [ D5TutorialSimpleQuickModule::class, 'module_styles' ],
-                'scriptDataComponent' => [ D5TutorialSimpleQuickModule::class, 'module_script_data' ],
+                'stylesComponent'     => [D5TutorialSimpleQuickModule::class, 'module_styles'],
+                'scriptDataComponent' => [D5TutorialSimpleQuickModule::class, 'module_script_data'],
                 'children'            => $module_container_children,
             ]
         );
     }
-
 }
 
 // Register module.
 add_action(
     'divi_module_library_modules_dependency_tree',
-    function( $dependency_tree ) {
-            $dependency_tree->add_dependency( new D5TutorialSimpleQuickModule() );
+    function ($dependency_tree) {
+        $dependency_tree->add_dependency(new D5TutorialSimpleQuickModule());
     }
 );
