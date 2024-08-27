@@ -110,19 +110,25 @@ const simpleQuickModule = {
     // React function component that renders module settings' design panel.
     design: () => (
       <React.Fragment>
-        <FontGroup attrName="title.decoration.font" groupLabel="Title Font" />
+        <GroupContainer id="imageStyle" title="Image Style">
+        <SpacingGroup attrName="image.decoration.spacing" grouped={false}/>
+        <BorderGroup attrName="image.decoration.border" grouped={false} />
+        <SizingGroup attrName="image.decoration.sizing" grouped={false}/>
+        </GroupContainer>
+
+        <FontGroup attrName="title.decoration.font" groupLabel="Title Style" />
         <FontBodyGroup
           attrName="content.decoration.bodyFont"
-          groupLabel="Content Font"
+          groupLabel="Content Style"
         />
 
-        <GroupContainer id="buttonStyle" title="Button Styles">
+        <GroupContainer id="buttonStyle" title="Button Style">
           <FontGroup attrName="button.decoration.font" grouped={false}/>
           <SpacingGroup attrName="button.decoration.spacing" grouped={false}/>
           <BackgroundGroup attrName="button.decoration.background" grouped={false} />
           <BorderGroup attrName="button.decoration.border" grouped={false} />
         </GroupContainer>
-        
+
         <SizingGroup />
         <SpacingGroup />
         <BorderGroup />

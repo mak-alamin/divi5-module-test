@@ -33,6 +33,11 @@ const ModuleStyles = ({
       },
     })}
 
+    {/* Element: Image */}
+    {elements.style({
+      attrName: "image",
+    })}
+
     {/* Element: Title */}
     {elements.style({
       attrName: "title",
@@ -43,8 +48,8 @@ const ModuleStyles = ({
       attrName: "content",
     })}
 
-      {/* Element: Button */}
-      {elements.style({
+    {/* Element: Button */}
+    {elements.style({
       attrName: "button",
     })}
   </StyleContainer>
@@ -109,7 +114,7 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
         })}
 
         <div className="divi5_simple_quick_module__button">
-            <a href={buttonLink}>{buttonText}</a>
+          <a href={buttonLink}>{buttonText}</a>
         </div>
       </div>
     </ModuleContainer>
