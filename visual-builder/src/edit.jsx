@@ -42,6 +42,11 @@ const ModuleStyles = ({
     {elements.style({
       attrName: "content",
     })}
+
+      {/* Element: Button */}
+      {elements.style({
+      attrName: "button",
+    })}
   </StyleContainer>
 );
 
@@ -87,8 +92,6 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
     >
-        {console.log(elements)}
-
       {elements.styleComponents({
         attrName: "module",
       })}

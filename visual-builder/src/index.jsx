@@ -18,6 +18,7 @@ const {
   FieldContainer,
 
   // Settings - Design
+  ButtonStyle,
   AnimationGroup,
   BorderGroup,
   BoxShadowGroup,
@@ -113,6 +114,8 @@ const simpleQuickModule = {
           attrName="content.decoration.bodyFont"
           groupLabel="Content Font"
         />
+        <ButtonStyle attrName="button.decoration" Label="Button Style"/>
+          
         <SizingGroup />
         <SpacingGroup />
         <BorderGroup />
@@ -172,14 +175,14 @@ const simpleQuickModule = {
     button: {
       innerContent: {
         desktop: {
-          value: "Click Here"
+          value: "Click Here",
         },
       },
     },
     buttonUrl: {
       innerContent: {
         desktop: {
-          value: "#"
+          value: "#",
         },
       },
     },
