@@ -53,6 +53,26 @@
       "inlineEditor": "richText",
       "childrenSanitizer": "et_core_esc_previously",
       "allowHtml": true
+    },
+    "button": {
+      "type": "object",
+      "selector": "{{selector}} .divi5_simple_quick_module_button",
+      "attributes": {
+        "class": "divi5_simple_quick_module_button"
+      },
+      "tagName": "a",
+      "inlineEditor": "plainText",
+      "childrenSanitizer": "et_core_esc_previously"
+    },
+    "buttonUrl": {
+      "type": "object",
+      "selector": "{{selector}} .divi5_simple_quick_module_button",
+      "attributes": {
+        "class": "divi5_simple_quick_module_button"
+      },
+      "tagName": "a",
+      "inlineEditor": "URL",
+      "childrenSanitizer": "et_core_esc_previously"
     }
   }
 }

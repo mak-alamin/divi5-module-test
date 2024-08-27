@@ -173,6 +173,28 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
             ]
         );
 
+        //Button
+		$buttonText = $attrs['button']['innerContent']['desktop']['value'] ?? '';
+		$buttonUrl = $attrs['buttonUrl']['innerContent']['desktop']['value'] ?? '';
+
+		$button = HTMLUtility::render(
+			[
+				'tag'               => 'a',
+				'attributes'        => [
+                    'href' => $buttonUrl,
+					'class' => 'divi5_simple_quick_module_button',
+				],
+				'children'          => $buttonText,
+                'childrenSanitizer' => 'et_core_esc_previously',
+				'attributesSanitizers' => [
+					'href' => function ( $value ) {
+						$protocols = array_merge( wp_allowed_protocols(), [ 'data' ] ); // Need to add `data` protocol for default image.
+						return esc_url( $value, $protocols );
+					},
+				],
+			]
+		);
+
         // Module Inner.
         // Essentially, this is the module content.
         // Were wrapping the title and content in a div with class `et_pb_module_inner`.
@@ -183,7 +205,7 @@ class D5TutorialSimpleQuickModule implements DependencyInterface {
                     'class' => 'et_pb_module_inner',
                 ],
                 'childrenSanitizer' => 'et_core_esc_previously',
-                'children'          => $image_container .  $title . $content,
+                'children'          => $image_container .  $title . $content . $button,
             ]
         );
 

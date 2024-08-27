@@ -73,7 +73,8 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
   const imageSrc = attrs?.image?.innerContent?.desktop?.value?.src ?? "";
   const imageAlt = attrs?.image?.innerContent?.desktop?.value?.alt ?? "";
 
-  console.log(imageSrc);
+  const buttonText = attrs?.button?.innerContent?.desktop?.value ?? "";
+  const buttonLink = attrs?.buttonUrl?.innerContent?.desktop?.value ?? "";
 
   return (
     <ModuleContainer
@@ -86,6 +87,8 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
     >
+        {console.log(elements)}
+
       {elements.styleComponents({
         attrName: "module",
       })}
@@ -101,6 +104,10 @@ export const ModuleEdit = ({ attrs, id, name, elements }) => {
         {elements.render({
           attrName: "content",
         })}
+
+        <div className="divi5_simple_quick_module_button">
+            <a href={buttonLink}>{buttonText}</a>
+        </div>
       </div>
     </ModuleContainer>
   );

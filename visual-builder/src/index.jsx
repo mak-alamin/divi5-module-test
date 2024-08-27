@@ -82,6 +82,21 @@ const simpleQuickModule = {
           >
             <UploadContainer />
           </FieldContainer>
+
+          <FieldContainer
+            attrName="button.innerContent"
+            label="Button Text"
+            description="Button Text"
+          >
+            <TextContainer />
+          </FieldContainer>
+          <FieldContainer
+            attrName="buttonUrl.innerContent"
+            label="Button Link"
+            description="Button Link"
+          >
+            <TextContainer />
+          </FieldContainer>
         </GroupContainer>
 
         <BackgroundGroup />
@@ -151,6 +166,20 @@ const simpleQuickModule = {
       innerContent: {
         desktop: {
           value: "Module Content ...",
+        },
+      },
+    },
+    button: {
+      innerContent: {
+        desktop: {
+          value: "Click Here"
+        },
+      },
+    },
+    buttonUrl: {
+      innerContent: {
+        desktop: {
+          value: "#"
         },
       },
     },
