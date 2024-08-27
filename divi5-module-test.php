@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Divi5 Simple Test Module (Test Task)
+Plugin Name: Divi5 Simple Test Module
 Plugin URI:
 Description: Plugin for creating a simple Divi 5 Module.
 Version:     1.0.0
